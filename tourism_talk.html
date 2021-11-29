@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Оценка на ефекта от пандемията Covid-19 върху броя на туристическите посещения на чужденци в България през 2020 г.</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Виктор Аврамов" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Оценка на ефекта от пандемията Covid-19 върху броя на туристическите посещения на чужденци в България през 2020 г.
+### Виктор Аврамов
+### Нов български университет
+### 2021/11/30
+
+---
+
+
+# Какво изследваме?
+
+--
+
+## Точната дефиниция на данните за туристически пътувания от категорията „Туризъм“ в НСИ е:
+
+--
+
+„посещения на чужденци в България с цел почивка и екскурзия“
+
+--
+
+и
+
+--
+
+„пътувания на български граждани в чужбина с цел почивка и екскурзия“.
+
+
+---
+class: inverse, center, middle
+
+# Винаги е добре да визуализираме данните си!
+
+---
+# Посещения на чужденци в България
+
+.center[![one](Picture 1.png)]
+
+--
+
+Пиковете на посещенията на чужденци са основно в летните месеци юли и август;
+
+--
+
+за останалите месеци от годината е трудно да се открият такива.
+
+---
+
+# Месечата динамика може да се визуализира и по друг начин
+
+.center[![one](Picture 2.png)]
+
+--
+
+Така може да сме сигурни за това в кои месеци са пиковете на туристическите посещения.
+---
+# Сезонност и сезонно декомпозиране
+
+"Систематична, но не винаги постоянна динамика, причинена директно от метеорологичното време, календара или вземането на решения на икономическите субекти."&lt;sup&gt;1&lt;/sup&gt;
+
+--
+
+Математически, данните, характеризиращи се със сезонност, се дефинират така:
+
+`$$y_t=S_t+T_t+R_t$$`
+
+--
+
+`\(y_t\)` е елемент от времевия ред във време `\(t\)`, `\(S_t\)` е сезонния компонент, `\(T_t\)` е компонента на тренда и `\(R_t\)` е остатъка. 
+
+.footnote[
+[1] S. Hylleberg, Seasonality in Regression, Orlando: Academic Press, 1986. 
+]
+
+---
+# Сезонност и автокорелация
+
+## Формална дефиниция
+
+Когато данните имат изразена сезонност, трябва да се очаква, че автокорелацията между наблюденята `\(y_t\)` и `\(y_{(t-s)}\)` трябва да бъде по-висока от тази между наблюденията  `\(y_t\)` и `\(y_{(t-k,k≠s)}\)`. 
+--
+
+.center[![one](Picture 3.png)]
+
+
+---
+
+class: inverse, center, middle
+
+# Сезонно декомпозиране
+---
+
+.center[![one](Picture 4.png)]
+
+---
+# Моделиране и прогнозиране
+
+Моделирането може да се направи с използването на  сезонен `\(ARIMA(p,d,q)(P,D,Q)m\)` модел, където `\(p\)` e степента на авторегресивния компонент, `\(d\)` е степента на диференциране, `\(q\)` е степента на пълзящата средна, като и трите се отнасят за несезонната част на модела. `\(P,D,Q\)` са съответните степени на сезонния модел, и `\(m\)` е броя на годишните наблюдения.
+
+--
+
+Избраният модел е `\(ARIMA(1,0,1)(0,1,2)12\)`. 
+
+---
+# Прогнозни и реални посещения на чуждестранни туристи в България за 2020 г.
+
+.center[![one](Picture 5.png)]
+
+---
+# Прогнозни и реални посещения
+
+|Месец          | Посещения| Прогноза| Разлика|
+|:--------------|---------:|--------:|-------:|
+|Януари 2020    |    259133|   248007|  -11126|
+|Февруари 2020  |    215259|   208854|   -6405|
+|Март 2020      |     84726|   216537|  131811|
+|Април 2020     |       586|   281667|  281081|
+|Май 2020       |       873|   356575|  355702|
+|Юни 2020       |     41240|   761464|  720224|
+|Юли 2020       |    166766|  1151426|  984660|
+|Август 2020    |    242468|  1284186| 1041718|
+|Септември 2020 |    196003|   593075|  397072|
+|Октомври 2020  |     88571|   268539|  179968|
+|Ноември 2020   |     42491|   195215|  152724|
+|Декември 2020  |     26572|   227519|  200947|
+|Общо           |   1364688|  5793064| 4428376|
+
+---
+
+background-image: url(pippin.jpg)
+background-size: contain
+background-position: 50% 50%
+class: center, bottom, inverse
+
+# You only live once!
+
+---
+
+class: center, middle
+
+# Благодаря!
+
+Слайдовете са създадени с пакета [**xaringan**](https://github.com/yihui/xaringan), с помощта на [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), и [R Markdown](https://rmarkdown.rstudio.com).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
